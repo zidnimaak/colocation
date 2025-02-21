@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Créer une annonce - Colocation Maroc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Le reste du contenu HTML reste inchangé jusqu'au modal de paiement -->
+
+    <!-- Modal de paiement -->
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden overflow-y-auto">
+        <div class="min-h-screen px-2 sm:px-4 text-center flex items-center justify-center">
+            <div class="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Choisir le mode de paiement</h3>
+                    <button type="button" class="text-gray-400 hover:text-gray-500" onclick="closePaymentModal()">
+                        <span class="sr-only">Fermer</span>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div id="selectedPackInfo" class="bg-gray-50 p-4 rounded-lg mb-6">
+                        <p class="text-lg font-semibold" id="packName">Pack Standard</p>
+                        <p class="text-gray-600" id="packPrice">49,00 DH</p>
+                    </div>
+
+                    <!-- Options de paiement -->
+                    <div class="space-y-3 sm:space-y-4">
+                        <!-- Mobile Money -->
+                        <button onclick="processPayment('mobile_money')" class="w-full flex items-center justify-between p-3 sm:p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <span class="flex items-center text-sm sm:text-base">
+                                <i class="fas fa-mobile-alt text-orange-500 mr-3 text-xl"></i>
+                                Mobile Money (Orange/Inwi)
+                            </span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+
+                        <!-- Carte bancaire -->
+                        <button onclick="processPayment('card')" class="w-full flex items-center justify-between p-3 sm:p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <span class="flex items-center text-sm sm:text-base">
+                                <i class="fas fa-credit-card text-blue-500 mr-3 text-xl"></i>
+                                Carte bancaire
+                            </span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+
+                        <!-- PayPal -->
+                        <button onclick="processPayment('paypal')" class="w-full flex items-center justify-between p-3 sm:p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <span class="flex items-center text-sm sm:text-base">
+                                <i class="fab fa-paypal text-[#003087] mr-3 text-xl"></i>
+                                PayPal
+                            </span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+
+                        <!-- Transfert d'argent -->
+                        <button onclick="processPayment('cash_transfer')" class="w-full flex items-center justify-between p-3 sm:p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <span class="flex items-center text-sm sm:text-base">
+                                <i class="fas fa-money-bill-wave text-green-500 mr-3 text-xl"></i>
+                                Wafacash / Cash Plus
+                            </span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function processPayment(method) {
+            const packName = document.getElementById('packName').textContent;
+            const packPrice = document.getElementById('packPrice').textContent;
+
+            if (method === 'mobile_money') {
+                const provider = confirm('Choisissez votre opérateur:\n\nOK pour Orange Money\nAnnuler pour Inwi Money');
+                method = provider ? 'orange_money' : 'inwi_money';
+            } else if (method === 'cash_transfer') {
+                const provider = confirm('Choisissez votre service de transfert:\n\nOK pour Wafacash\nAnnuler pour Cash Plus');
+                method = provider ? 'wafacash' : 'cash_plus';
+            }
+
+            console.log('Traitement du paiement :', {
+                method: method,
+                pack: packName,
+                price: packPrice
+            });
+
+            setTimeout(() => {
+                alert('Paiement effectué avec succès !');
+                closePaymentModal();
+            }, 1500);
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.classList.add('hidden');
+        }
+
+        function openPaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

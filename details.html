@@ -1,0 +1,606 @@
+create-announce-fr.html<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تفاصيل الإعلان - زيدني معاك</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="SHORTCUT ICON" type="image/ico" href="fav.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #c1272d;
+            --primary-green: #006233;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', Arial, sans-serif;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 1rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-button:hover {
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        .nav-button.prev {
+            right: 1rem; /* Inversé pour RTL */
+        }
+
+        .nav-button.next {
+            left: 1rem; /* Inversé pour RTL */
+        }
+
+        .amenity-badge {
+            background-color: var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.25rem;
+        }
+
+        .amenity-badge i {
+            color: var(--primary-green);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-red);
+        }
+
+        .contact-button {
+            width: 100%;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-button i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+
+        .phone-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+            width: 100%;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .phone-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .phone-btn i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            background: var(--primary-red);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .image-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-2">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" ><img  src="fav.jpeg" alt="Logo" class="h-12 w-12 ml-2"></a>
+                    <a href="index.html" class="text-2xl font-bold text-red-600">زدني معاك</a>
+                </div>
+                
+                <!-- Menu mobile -->
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Menu desktop -->
+                <div class="hidden md:flex md:items-center md:space-x-4 md:space-x-reverse">
+                    <a href="index.html" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">الرئيسية</a>
+                    <a href="annoncesarab.html" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">الإعلانات</a>
+                    <a href="detailsfr.html" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Français</a>
+                    <div class="relative">
+                        <a href="#" class="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-envelope"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">0</span>
+                        </a>
+                    </div>
+                    <div id="userMenu" class="hidden">
+                        <div class="flex items-center space-x-3 cursor-pointer group relative">
+                            <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="text-gray-800 mr-2">فاتي</span>
+                            <div class="absolute left-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block py-2 text-right">
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-red-50">الملف الشخصي</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-red-50">إعلاناتي</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-red-50">الرسائل</a>
+                                <hr class="my-2">
+                                <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50" onclick="logout()">تسجيل الخروج</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="#" class="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 mx-2" onclick="openAuthModal()">تسجيل الدخول</a>
+                        <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700" onclick="openAuthModal('register')">إنشاء حساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu mobile déroulant -->
+        <div class="md:hidden hidden transition-all duration-300 ease-in-out absolute w-full bg-white border-t" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">الرئيسية</a>
+                <a href="annoncesarab.html" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">الإعلانات</a>
+                <a href="detailsfr.html" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">Français</a>
+                <div class="relative inline-block w-full">
+                    <a href="#" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">
+                        <i class="fas fa-envelope"></i>
+                        <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">0</span>
+                        الرسائل
+                    </a>
+                </div>
+                <div id="userMenuMobile" class="hidden">
+                    <div class="px-3 py-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="text-gray-800">فاتي</span>
+                        </div>
+                        <div class="mt-2 space-y-1">
+                            <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-red-50 rounded-md">الملف الشخصي</a>
+                            <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-red-50 rounded-md">إعلاناتي</a>
+                            <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-red-50 rounded-md">الرسائل</a>
+                            <hr class="my-2">
+                            <a href="#" class="block px-3 py-2 text-red-600 hover:bg-red-50 rounded-md" onclick="logout()">تسجيل الخروج</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <a href="#" class="block w-full bg-red-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-red-700 text-center mb-2" onclick="openAuthModal()">تسجيل الدخول</a>
+                    <a href="#" class="block w-full bg-green-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-green-700 text-center" onclick="openAuthModal('register')">إنشاء حساب</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Colonne principale -->
+            <div class="lg:col-span-2">
+                <!-- Images -->
+                <div class="relative">
+                    <img id="mainImage" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" alt="الصورة الرئيسية" class="main-image">
+                    <button onclick="previousImage()" class="nav-button prev">
+                        <i class="fas fa-chevron-right text-xl"></i>
+                    </button>
+                    <button onclick="nextImage()" class="nav-button next">
+                        <i class="fas fa-chevron-left text-xl"></i>
+                    </button>
+                </div>
+                <script>
+                    const images = [
+                        'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267',
+                        'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688',
+                        'https://images.unsplash.com/photo-1505691938895-1758d7feb511',
+                        'https://images.unsplash.com/photo-1484154218962-a197022b5858'
+                    ];
+                    let currentImageIndex = 0;
+
+                    function previousImage() {
+                        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                        updateMainImage();
+                    }
+
+                    function nextImage() {
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        updateMainImage();
+                    }
+
+                    function updateMainImage() {
+                        const mainImage = document.getElementById('mainImage');
+                        mainImage.style.opacity = '0';
+                        setTimeout(() => {
+                            mainImage.src = images[currentImageIndex];
+                            mainImage.style.opacity = '1';
+                        }, 200);
+                    }
+
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'ArrowRight') { // Inversé pour RTL
+                            previousImage();
+                        } else if (e.key === 'ArrowLeft') { // Inversé pour RTL
+                            nextImage();
+                        }
+                    });
+                </script>
+                <div class="image-gallery">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" alt="صورة 1">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688" alt="صورة 2">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511" alt="صورة 3">
+                    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858" alt="صورة 4">
+                </div>
+
+                <!-- Informations principales -->
+                <div class="mt-8">
+                    <div class="flex justify-between items-start">
+                        <h1 class="text-3xl font-bold text-gray-800">شقة عصرية في وسط المدينة</h1>
+                        <span class="text-2xl font-bold text-red-600">3500 درهم/شهر</span>
+                    </div>
+                    <p class="text-gray-600 mt-2">
+                        <i class="fas fa-map-marker-alt text-red-600"></i>
+                        حي المعاريف، الدار البيضاء
+                    </p>
+                </div>
+
+                <!-- Description -->
+                <div class="mt-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">الوصف</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        شقة رائعة مفروشة في قلب الدار البيضاء، مثالية للسكن المشترك. 
+                        تحتوي الشقة على 3 غرف نوم واسعة، صالون كبير مشرق، مطبخ 
+                        مجهز بالكامل وحمامين عصريين. تقع في حي هادئ وآمن، 
+                        قريب من جميع المرافق (المتاجر، وسائل النقل، المطاعم).
+                    </p>
+                </div>
+
+                <!-- Caractéristiques -->
+                <div class="mt-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">المميزات</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-bed text-green-600"></i>
+                            <span>3 غرف نوم</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-bath text-green-600"></i>
+                            <span>2 حمام</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-vector-square text-green-600"></i>
+                            <span>120 متر مربع</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Équipements -->
+                <div class="mt-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">التجهيزات</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="amenity-badge">
+                            <i class="fas fa-wifi"></i>
+                            واي فاي
+                        </span>
+                        <span class="amenity-badge">
+                            <i class="fas fa-snowflake"></i>
+                            تكييف
+                        </span>
+                        <span class="amenity-badge">
+                            <i class="fas fa-parking"></i>
+                            موقف سيارات
+                        </span>
+                        <span class="amenity-badge">
+                            <i class="fas fa-couch"></i>
+                            مفروش
+                        </span>
+                        <span class="amenity-badge">
+                            <i class="fas fa-tv"></i>
+                            تلفاز
+                        </span>
+                        <span class="amenity-badge">
+                            <i class="fas fa-washer"></i>
+                            غسالة
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne latérale -->
+            <div class="lg:col-span-1">
+                <!-- Carte de contact -->
+                <div class="contact-card sticky top-24">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="الصورة الشخصية" class="profile-image">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">أحمد كريمي</h3>
+                            <p class="text-gray-600">عضو منذ 2023</p>
+                        </div>
+                    </div>
+                    <button class="contact-button" onclick="toggleContactForm()">
+                        <i class="fas fa-envelope"></i>
+                        تواصل معنا
+                    </button>
+                    <button class="phone-btn w-full mb-4" onclick="showPhone(this)">
+                        <i class="fas fa-phone"></i>
+                        اظهار رقم الهاتف
+                    </button>
+
+                    <!-- Informations supplémentaires -->
+                    <div class="mt-6 space-y-4">
+                        <div class="flex items-center gap-2 text-gray-600">
+                            <i class="fas fa-user-friends"></i>
+                            <span>السكن المشترك مقبول</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-600">
+                            <i class="fas fa-smoking-ban"></i>
+                            <span>ممنوع التدخين</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-600">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>متوفر فورا</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="image-gallery">
+            <!-- Images ici -->
+        </div>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="#" class="footer-logo">زدني معاك</a>
+                <p>منصتك الموثوقة للعثور على شريك السكن المثالي في المغرب. نجعل المشاركة في السكن بسيطة وآمنة ومتاحة للجميع.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">بحث</a></li>
+                    <li><a href="#">كيف يعمل</a></li>
+                    <li><a href="#">نشر إعلان</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>المساعدة والدعم</h3>
+                <ul class="footer-links">
+                    <li><a href="#">مركز المساعدة</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#">شروط الاستخدام</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>اتصل بنا</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-phone"></i> +212 5XX-XXXXXX</li>
+                    <li><i class="fas fa-envelope"></i> contact@zidnim3ak.ma</li>
+                    <li><i class="fas fa-map-marker-alt"></i> الراشيدية، المغرب</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 زدني معاك. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fonction pour gérer l'affichage des images
+        document.querySelectorAll('.image-gallery img').forEach(img => {
+            img.addEventListener('click', function() {
+                const mainImage = document.querySelector('.main-image');
+                const tempSrc = mainImage.src;
+                mainImage.src = this.src;
+                this.src = tempSrc;
+            });
+        });
+
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.querySelector('#mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fonction pour afficher le numéro de téléphone
+        function showPhone(button) {
+            button.innerHTML = '<i class="fas fa-phone"></i> 0600000000';
+            button.style.cursor = 'default';
+            button.onclick = null;
+        }
+
+        function toggleContactForm() {
+            alert("سيتم فتح نموذج الاتصال قريباً");
+        }
+
+        function openWhatsApp() {
+            // Remplacer par le numéro WhatsApp réel
+            const phoneNumber = "+212600000000";
+            const message = "مرحبا، أود الاستفسار عن إعلانك للسكن المشترك";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function submitForm() {
+            // Ici vous pouvez ajouter la logique d'envoi du formulaire
+            alert('تم إرسال رسالتك بنجاح!');
+            document.querySelector('.contact-form').reset();
+        }
+    </script>
+</body>
+</html>

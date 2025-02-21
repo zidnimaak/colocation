@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zidni M3ak</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="SHORTCUT ICON" type="image/ico" href="fav.jpeg">
+    <style>
+        :root {
+            --primary-red: #c1272d;
+            --primary-green: #006233;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', Arial, sans-serif;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .search-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 1000px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .search-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .filter-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            background-color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(193, 39, 45, 0.1);
+        }
+
+        #budget {
+            padding-left: 4rem;
+            direction: rtl;
+        }
+
+        #budget::-webkit-inner-spin-button,
+        #budget::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        #budget {
+            -moz-appearance: textfield;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .search-button {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            background-color: #a01f24;
+        }
+
+        .why-us {
+            padding: 4rem 1rem;
+            background-color: var(--light-gray);
+        }
+
+        .why-us h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .why-us h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-us-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .why-us-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .why-us-card i {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-us-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .why-us-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .blog-section {
+            padding: 4rem 1rem;
+            background-color: var(--light-gray);
+        }
+
+        .blog-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .blog-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-category {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .read-more {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--primary-green);
+        }
+
+        .testimonials {
+            background: var(--primary-green);
+            color: white;
+            padding: 4rem 1rem;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .testimonials h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            color: #333;
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+            border: 3px solid var(--primary-red);
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.6;
+            text-align: right;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--primary-green);
+            text-align: left;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            background: var(--primary-red);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .mobile-menu-button {
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-button:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Style pour la liste des villes */
+        .city-input {
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding-right: 2.5rem !important;
+            border-color: #e2e8f0;
+            background-color: #f8fafc;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        /* Styles spécifiques pour mobile */
+        @media (max-width: 768px) {
+            .city-input {
+                font-size: 16px; /* Évite le zoom automatique sur iOS */
+                padding: 0.75rem 2.5rem !important;
+                height: 50px; /* Hauteur plus grande pour une meilleure accessibilité */
+            }
+
+            .filter-group {
+                margin-bottom: 1rem;
+            }
+
+            /* Amélioration du style de la liste déroulante sur mobile */
+            datalist {
+                width: 100%;
+                max-height: 200px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Style spécifique pour les appareils tactiles */
+            @supports (-webkit-touch-callout: none) {
+                .city-input {
+                    padding: 0.75rem 2.5rem !important;
+                }
+
+                /* Améliorer la zone de touch */
+                option {
+                    padding: 1rem 1.25rem;
+                    min-height: 44px; /* Taille minimale recommandée pour les éléments tactiles */
+                }
+            }
+
+            /* Ajustements pour les petits écrans */
+            .search-box {
+                padding: 1rem !important;
+            }
+
+            .filter-group label {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Amélioration de l'accessibilité des icônes */
+            .fa-map-marker-alt {
+                font-size: 1.25rem;
+                padding: 10px;
+            }
+        }
+
+        .city-input:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(193, 39, 45, 0.1);
+            outline: none;
+            background-color: white;
+        }
+
+        .city-input:hover {
+            background-color: white;
+            border-color: #cbd5e1;
+        }
+
+        .city-input::-webkit-calendar-picker-indicator {
+            display: none !important;
+        }
+
+        /* Style pour les options de la datalist */
+        option {
+            font-size: 1.1rem;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 4px 0;
+        }
+
+        option:hover {
+            background-color: #f1f5f9;
+            transform: translateX(4px);
+        }
+
+        /* Animation pour l'icône */
+        .fa-map-marker-alt {
+            transition: all 0.3s ease;
+        }
+
+        .city-input:focus + i {
+            color: var(--primary-red);
+            transform: translate(50%, -50%) scale(1.1);
+        }
+
+        /* Optimisations pour le touch */
+        @media (hover: none) {
+            option:hover {
+                transform: none;
+            }
+
+            .city-input:hover {
+                background-color: #f8fafc;
+            }
+        }
+    </style>
+    <!-- Ajout de la police Cairo pour l'arabe -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-2">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="indexfr.html" ><img  src="fav.jpeg" alt="Logo" class="h-12 w-12 ml-2"></a>
+                    <a href="indexfr.html" class="text-2xl font-bold text-red-600">Zidni M3ak</a>
+                </div>
+                
+                <!-- Menu mobile -->
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Menu desktop -->
+                <div class="hidden md:flex md:items-center md:space-x-4 md:space-x-reverse">
+                    <a href="#search" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Rechercher</a>
+                    <a href="#about" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">À propos</a>
+                    <a href="#contact" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    <a href="index.html" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">العربية</a>
+                    <div class="relative">
+                        <a href="#" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-envelope"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">0</span>
+                        </a>
+                    </div>
+                    <div id="userMenu" class="hidden">
+                        <div class="flex items-center space-x-3 cursor-pointer group relative">
+                            <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="text-gray-800 mr-2">Fati</span>
+                            <div class="absolute left-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block py-2 text-right">
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-red-50">Profil</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-red-50">Annonces</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-red-50">Messages</a>
+                                <hr class="my-2">
+                                <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50" onclick="logout()">Déconnexion</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="#" class="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 mx-2" onclick="openAuthModal()">Connexion</a>
+                        <a href="#" class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700" onclick="openAuthModal('register')">Inscription</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu mobile déroulant -->
+            <div class="md:hidden hidden transition-all duration-300 ease-in-out absolute w-full bg-white border-t" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="indexfr.html" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                    <a href="annonces.html" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">Annonces</a>
+                    <a href="index.html" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">العربية</a>
+                    <div class="relative inline-block w-full">
+                        <a href="#" class="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium">
+                            <i class="fas fa-envelope"></i>
+                            <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">0</span>
+                            Messages
+                        </a>
+                    </div>
+                    <div id="userMenuMobile" class="hidden">
+                        <div class="px-3 py-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <span class="text-gray-800">Fati</span>
+                            </div>
+                            <div class="mt-2 space-y-1">
+                                <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-red-50 rounded-md">Profil</a>
+                                <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-red-50 rounded-md">Annonces</a>
+                                <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-red-50 rounded-md">Messages</a>
+                                <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-red-50 rounded-md">Messages reçus</a>
+                                <hr class="my-2">
+                                <a href="#" class="block px-3 py-2 text-red-600 hover:bg-red-50 rounded-md" onclick="logout()">Déconnexion</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <a href="#" class="block w-full bg-red-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-red-700 text-center mb-2" onclick="openAuthModal()">Connexion</a>
+                        <a href="#" class="block w-full bg-green-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-green-700 text-center" onclick="openAuthModal('register')">Inscription</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal moderne de connexion/inscription -->
+    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-auto transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent" id="modalTitle">Connexion</h2>
+                <button class="text-gray-400 hover:text-gray-600 transition-colors" onclick="closeAuthModal()">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <!-- Formulaire de connexion -->
+            <form id="loginForm" class="space-y-6">
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">Email</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors" placeholder="votre@email.com" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">Mot de passe</label>
+                    <div class="relative">
+                        <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors pr-12" placeholder="Votre mot de passe" required>
+                        <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700" onclick="togglePassword(this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center text-gray-600">
+                        <input type="checkbox" class="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                        Se souvenir de moi
+                    </label>
+                    <a href="#" class="text-red-600 hover:text-red-700">Mot de passe oublié ?</a>
+                </div>
+                <button type="submit" class="w-full py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                    Se connecter
+                </button>
+                <p class="text-center text-gray-600">
+                    Pas encore de compte ?
+                    <a href="#" class="text-red-600 hover:text-red-700" onclick="switchTab('register')">S'inscrire</a>
+                </p>
+            </form>
+            <!-- Formulaire d'inscription -->
+            <form id="registerForm" class="space-y-6 hidden">
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">Nom complet</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors" placeholder="Votre nom complet" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">Email</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors" placeholder="votre@email.com" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">Mot de passe</label>
+                    <div class="relative">
+                        <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors pr-12" placeholder="Votre mot de passe" required>
+                        <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700" onclick="togglePassword(this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">Confirmer le mot de passe</label>
+                    <div class="relative">
+                        <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors pr-12" placeholder="Confirmez votre mot de passe" required>
+                        <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700" onclick="togglePassword(this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                    S'inscrire
+                </button>
+                <p class="text-center text-gray-600">
+                    Déjà un compte ?
+                    <a href="#" class="text-green-600 hover:text-green-700" onclick="switchTab('login')">Se connecter</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ajuster le padding-top pour compenser la navbar fixe -->
+    <div class="pt-16">
+        <section class="hero">
+            <h1>Trouvez votre colocataire idéal</h1>
+            <p>La meilleure plateforme pour trouver des colocataires de confiance au Maroc</p>
+            <div class="search-box bg-white rounded-lg p-6 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="filter-group">
+                        <label class="text-gray-700 mb-2 block text-left">Ville</label>
+                        <div class="relative">
+                            <input list="cityList" id="city" name="city" 
+                                   class="w-full px-4 py-3 border-2 rounded-lg text-black bg-white text-left city-input" 
+                                   placeholder="Choisir une ville" autocomplete="off">
+                            <i class="fas fa-map-marker-alt absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                        <datalist id="cityList" class="city-list">
+                            <option value="Casablanca">
+                            <option value="Rabat">
+                            <option value="Marrakech">
+                            <option value="Tanger">
+                            <option value="Agadir">
+                            <option value="Fès">
+                            <option value="Meknès">
+                            <option value="Tétouan">
+                            <option value="Kénitra">
+                            <option value="Oujda">
+                            <option value="Safi">
+                            <option value="El Jadida">
+                            <option value="Témara">
+                            <option value="Mohammedia">
+                            <option value="Khouribga">
+                            <option value="Beni Mellal">
+                            <option value="Laâyoune">
+                            <option value="Nador">
+                            <option value="Berrechid">
+                            <option value="Settat">
+                            <option value="Larache">
+                            <option value="Essaouira">
+                            <option value="Taza">
+                            <option value="Ouarzazate">
+                        </datalist>
+                    </div>
+                    <div class="filter-group">
+                        <label class="text-gray-700 mb-2 block text-left">Budget maximum</label>
+                        <div class="relative">
+                            <input type="number" id="budget" placeholder="Budget en MAD" class="w-full px-4 py-2 border rounded-lg text-black pl-16 text-left" min="0">
+                            <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500">MAD</span>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label class="text-gray-700 mb-2 block text-left">Type de logement</label>
+                        <select id="housingType" class="w-full px-4 py-2 border rounded-lg text-black bg-white text-left">
+                            <option value="">Tous les types</option>
+                            <option value="have-apartment">J'ai un appartement et je cherche un colocataire</option>
+                            <option value="need-apartment">Je cherche un appartement et un colocataire</option>
+                            <option value="shared-room">Chambre partagée</option>
+                            <option value="private-room">Chambre privée</option>
+                            <option value="studio">Studio</option>
+                            <option value="full-apartment">Appartement complet</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" id="roomsGroup" style="display: none;">
+                        <label class="text-gray-700 mb-2 block text-left">Nombre de chambres</label>
+                        <select class="w-full px-4 py-2 border rounded-lg text-black bg-white text-left">
+                            <option value="">Choisir</option>
+                            <option value="1">1 chambre</option>
+                            <option value="2">2 chambres</option>
+                            <option value="3">3 chambres</option>
+                            <option value="4+">4+ chambres</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-center gap-4">
+                    <button onclick="handleSearch(event)" class="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition w-full md:w-auto">
+                        <i class="fas fa-search mr-2"></i> Rechercher
+                    </button>
+                    <a href="create-announce-fr.html" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition w-full md:w-auto flex items-center justify-center">
+                        <i class="fas fa-plus mr-2"></i> Ajouter une annonce
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Pourquoi Nous -->
+        <section class="why-us">
+            <h2>Pourquoi nous choisir ?</h2>
+            <div class="why-us-grid">
+                <div class="why-us-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Sécurité Garantie</h3>
+                    <p>Nous vérifions minutieusement tous les profils pour assurer votre sécurité.</p>
+                </div>
+                <div class="why-us-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Matching Intelligent</h3>
+                    <p>Notre algorithme trouve le colocataire parfait selon vos critères et personnalité.</p>
+                </div>
+                <div class="why-us-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Gain de Temps</h3>
+                    <p>Trouvez rapidement votre colocataire idéal grâce à notre plateforme simple et efficace.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Blog -->
+        <section class="blog-section">
+            <h2>Derniers Articles</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Blog 1" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Conseils</span>
+                        <h3 class="blog-title">Comment trouver le colocataire parfait en 5 étapes</h3>
+                        <p class="blog-excerpt">Découvrez nos conseils d'experts pour trouver le colocataire idéal...</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Auteur">
+                                <span>Ahmed K.</span>
+                            </div>
+                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Blog 2" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Guide</span>
+                        <h3 class="blog-title">Guide complet de la colocation au Maroc</h3>
+                        <p class="blog-excerpt">Tout ce que vous devez savoir sur la colocation au Maroc...</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Auteur">
+                                <span>Sarah M.</span>
+                            </div>
+                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Blog 3" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Expériences</span>
+                        <h3 class="blog-title">Histoires de réussite : expériences réelles de colocation</h3>
+                        <p class="blog-excerpt">Lisez les expériences réelles de personnes qui ont trouvé des colocataires parfaits grâce à notre plateforme...</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Auteur">
+                                <span>Karim R.</span>
+                            </div>
+                            <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section Témoignages -->
+        <section class="testimonials">
+            <h2>Ce que disent nos utilisateurs</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah B." class="testimonial-image">
+                    <p class="quote">"Grâce à Zidni M3ak, j'ai trouvé mon colocataire idéal en moins d'une semaine. Le processus était simple et sécurisé."</p>
+                    <p class="author">- Sarah B.</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohammed A." class="testimonial-image">
+                    <p class="quote">"Une plateforme géniale qui m'a aidé à trouver un colocataire partageant les mêmes centres d'intérêt et mode de vie."</p>
+                    <p class="author">- Mohammed A.</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Fatima L." class="testimonial-image">
+                    <p class="quote">"La meilleure plateforme pour trouver des colocataires de confiance. Le service est excellent et le support est toujours disponible."</p>
+                    <p class="author">- Fatima L.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="#" class="footer-logo">Zidni M3ak</a>
+                    <p>Notre plateforme vous aide à trouver des colocataires de confiance au Maroc. Nous rendons la colocation simple, sécurisée et accessible à tous.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Recherche</a></li>
+                        <li><a href="#">Comment ça marche</a></li>
+                        <li><a href="#">Publier une annonce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Aide & Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +212 5XX-XXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> contact@zidnim3ak.ma</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Errachidia, Maroc</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zidni M3ak. Tous droits réservés.</p>
+            </div>
+        </footer>
+        <script>
+            // Toggle menu mobile
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('#mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Gestion de l'affichage du nombre de chambres
+            const housingType = document.getElementById('housingType');
+            const roomsGroup = document.getElementById('roomsGroup');
+
+            housingType.addEventListener('change', function() {
+                if (this.value === 'appartement' || this.value === 'villa') {
+                    roomsGroup.style.display = 'block';
+                } else {
+                    roomsGroup.style.display = 'none';
+                }
+            });
+
+            // Formatage du champ budget
+            const budgetInput = document.getElementById('budget');
+            
+            budgetInput.addEventListener('input', function() {
+                let value = this.value.replace(/\D/g, '');
+                
+                if (value.length > 7) {
+                    value = value.slice(0, 7);
+                }
+                
+                this.value = value;
+            });
+
+            function handleSearch(event) {
+                event.preventDefault();
+
+                const city = document.getElementById('city').value;
+                const budget = document.getElementById('budget').value;
+                const housingType = document.getElementById('housingType').value;
+
+                // Sauvegarder les critères de recherche
+                const searchCriteria = {
+                    city: city,
+                    budget: budget ? parseInt(budget) : 0,
+                    housingType: housingType
+                };
+
+                localStorage.setItem('searchCriteriaFr', JSON.stringify(searchCriteria));
+                window.location.href = 'annonces.html';
+            }
+
+            function openAuthModal(tab = 'login') {
+                const modal = document.getElementById('authModal');
+                const modalContent = document.getElementById('modalContent');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 10);
+                switchTab(tab);
+            }
+
+            function closeAuthModal() {
+                const modal = document.getElementById('authModal');
+                const modalContent = document.getElementById('modalContent');
+                modalContent.classList.remove('scale-100', 'opacity-100');
+                modalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+
+            function togglePassword(button) {
+                const input = button.parentElement.querySelector('input');
+                const icon = button.querySelector('i');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            }
+
+            function switchTab(tab) {
+                const loginForm = document.getElementById('loginForm');
+                const registerForm = document.getElementById('registerForm');
+                const modalTitle = document.getElementById('modalTitle');
+                
+                if (tab === 'login') {
+                    loginForm.classList.remove('hidden');
+                    registerForm.classList.add('hidden');
+                    modalTitle.textContent = 'Connexion';
+                } else {
+                    loginForm.classList.add('hidden');
+                    registerForm.classList.remove('hidden');
+                    modalTitle.textContent = 'Inscription';
+                }
+            }
+
+            function logout() {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('searchCity');
+                localStorage.removeItem('searchBudget');
+                localStorage.removeItem('searchHousingType');
+                window.location.reload();
+            }
+
+            // Fermer la modal en cliquant en dehors
+            document.getElementById('authModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeAuthModal();
+                }
+            });
+
+            function filterCities(searchText, selectId, inputId) {
+                const cities = [
+                    'Toutes les villes',
+                    'Casablanca',
+                    'Rabat',
+                    'Marrakech',
+                    'Tanger',
+                    'Agadir',
+                    'Fès',
+                    'Meknès',
+                    'Tétouan'
+                ];
+                
+                const input = document.getElementById(inputId);
+                const select = document.getElementById(selectId);
+                select.innerHTML = '';
+                
+                const filteredCities = cities.filter(city =>
+                    city.toLowerCase().includes(searchText.toLowerCase())
+                );
+
+                filteredCities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    select.appendChild(option);
+                });
+
+                select.style.display = 'block';
+
+                select.onchange = function() {
+                    input.value = this.value;
+                    select.style.display = 'none';
+                };
+            }
+        </script>
+    </div>
+</body>
+</html>
